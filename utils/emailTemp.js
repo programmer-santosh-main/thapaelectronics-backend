@@ -68,11 +68,11 @@ function wrapHtml(bodyHtml) {
     <div style="font-family:Arial,Helvetica,sans-serif;color:#222;line-height:1.4;">
       <div style="max-width:680px;margin:0 auto;padding:18px;">
         <div style="padding:12px 0;border-bottom:1px solid #eee;margin-bottom:18px;">
-          <h2 style="margin:0">Best HaatBazar</h2>
+          <h2 style="margin:0">Best Thapa Electronics</h2>
         </div>
         <div>${bodyHtml}</div>
         <div style="margin-top:18px;padding-top:12px;border-top:1px solid #eee;color:#666;font-size:13px;">
-          <div>Thanks for shopping with Best HaatBazar.</div>
+          <div>Thanks for shopping with Best Thapa Electronics.</div>
           <div>If you have questions, reply to this email or contact support.</div>
         </div>
       </div>
@@ -170,7 +170,7 @@ export function orderDeletedTemplate(order = {}) {
     <p>Your order <strong> #${orderId}</strong> has been deleted from our system.</p>
     <p>If you did not request this, please contact support immediately.</p>
     <p>We didnot store your data longer, we concern about your privacy.</p>
-    <a href="http://localhost:5173/"> Visit Website</a>
+    <a href="https://thapaelectronics.com/"> Visit Website</a>
 
   `;
 

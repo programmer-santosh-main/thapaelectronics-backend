@@ -10,7 +10,7 @@ const generateToken = (id) => {
   });
 };
 
-const primaryUrl = "https://www.thapaelectronics.com"; 
+const primaryUrl = "https://thapaelectronics.com"; 
 
 // ✅ Register User
 export const registerUser = async (req, res) => {
