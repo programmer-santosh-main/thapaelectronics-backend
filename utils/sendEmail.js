@@ -34,7 +34,7 @@ if (SMTP_HOST && SMTP_PORT && SMTP_USER && SMTP_PASS) {
     socketTimeout: 15000,
     requireTLS: !secureFlag,
     tls: {
-      rejectUnauthorized: false, // set true in production if certs are OK
+      rejectUnauthorized: true, // set true in production if certs are OK
     },
     logger: NODE_ENV !== "production", // reduce logs in production
     debug: NODE_ENV !== "production",
