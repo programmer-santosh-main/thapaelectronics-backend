@@ -2,11 +2,14 @@
 
 import express from "express";
 import dotenv from "dotenv";
+dotenv.config();
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import fileUpload from "express-fileupload";
 import connectDB from "./config/db.js";
-
+import session from "express-session";
+import passport from "passport";
+import "./config/passport.js"; 
 import authRoutes from "./routes/authRoutes.js";
 import adminRoutes from "./routes/adminRoutes.js";
 import productRoutes from "./routes/productRoutes.js";
@@ -16,11 +19,11 @@ import siteRoutes from "./routes/siteRoutes.js";
 import seoRoutes from "./routes/seoRoutes.js";
 import healthRoutes from "./routes/healthRoutes.js";
 import sitemapRoutes from "./routes/sitemapRoutes.js";
-
+import oauthRoutes from "./routes/auth.oauth.routes.js";
 import { cleanupUnverifiedUsers } from "./utils/cleanupUnverified.js";
 import { startHealthChecks, stopHealthChecks } from "./utils/healthCheck.js";
 
-dotenv.config();
+
 connectDB();
 
 const app = express();
@@ -34,6 +37,15 @@ const TWELVE_HOURS = 12 * 60 * 60 * 1000;
 // JSON & form parsing
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+  })
+);
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Cookies
 app.use(cookieParser());
@@ -121,7 +133,7 @@ app.use("/api/site", siteRoutes);
 app.use("/api/seo", seoRoutes);
 app.use("/", sitemapRoutes);
 app.use("/health", healthRoutes);
-
+app.use("/api/auth", oauthRoutes);
 /* =========================
    ✅ 404 HANDLER
 ========================= */
